@@ -68,14 +68,16 @@ const Dashboard: React.FC = () => {
       <Title>Explore repositórios no Github</Title>
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
+          data-testid="repository-input"
           placeholder="Digite o nome do repositório"
+          name="repository"
           value={newRepo}
           onChange={(e) => setNewRepo(e.target.value)}
         />
         <button type="submit">Pesquisar</button>
       </Form>
-      {inputError && <Error>{inputError}</Error>}
-      <Repositories>
+      {inputError && <Error data-testid="error-label">{inputError}</Error>}
+      <Repositories data-testid="repository-list">
         {repositories.map((repository) => (
           <Link
             key={repository.full_name}
